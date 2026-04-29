@@ -5,6 +5,9 @@ __pycache__/
 .venv/
 venv/
 
+# Pycharm
+.idea
+
 # ML модели (большие бинарные файлы, хранить отдельно или через Git LFS)
 vivida/gbm_models_output_all90_dosage_full_features/stacked_models.joblib
 vivida/gbm_models_output_all90_dosage_full_features/onehot_encoder.joblib
