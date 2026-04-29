@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="vivida.Views.MessageDialog"
+        Title="Сообщение"
+        Width="420" SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+
+    <StackPanel Margin="20" Spacing="16">
+        <TextBlock x:Name="MessageText"
+                   TextWrapping="Wrap"
+                   MaxWidth="380"/>
+        <Button Content="ОК"
+                HorizontalAlignment="Right"
+                MinWidth="80"
+                Click="OnOkClick"/>
+    </StackPanel>
+</Window>

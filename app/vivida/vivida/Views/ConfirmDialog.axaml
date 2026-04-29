@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="vivida.Views.ConfirmDialog"
+        Title="Подтверждение"
+        Width="400" SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+
+    <StackPanel Margin="20" Spacing="20">
+        <TextBlock x:Name="MessageText"
+                   TextWrapping="Wrap"
+                   MaxWidth="360"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button Content="Да"
+                    Classes="accent"
+                    MinWidth="80"
+                    Click="OnYesClick"/>
+            <Button Content="Нет"
+                    MinWidth="80"
+                    Click="OnNoClick"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

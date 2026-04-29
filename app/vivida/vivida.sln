@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vivida", "vivida\vivida.csproj", "{B81F0130-3C7F-4FE1-A133-F64EB50D1691}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B81F0130-3C7F-4FE1-A133-F64EB50D1691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81F0130-3C7F-4FE1-A133-F64EB50D1691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81F0130-3C7F-4FE1-A133-F64EB50D1691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81F0130-3C7F-4FE1-A133-F64EB50D1691}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

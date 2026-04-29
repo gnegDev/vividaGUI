@@ -1,0 +1,34 @@
+{
+  "id": "PATIENT_001",
+  "age": 58,
+  "gender": "M",
+  "tumor_size_before": 3.5,
+  "kps": 80,
+  "resection_extent": "gross_total",
+  "molecular_subtype": "classical",
+  "tumor_location": "temporal_lobe",
+  "contrast_enhancement": "ring",
+  "treatment": "chemoradiotherapy",
+  "chemotherapy": {
+    "drug": "Temozolomide",
+    "dose_mg_per_m2": 75,
+    "cycles": 6
+  },
+  "radiotherapy": {
+    "total_dose_Gy": 60,
+    "fractions": 30
+  },
+  "mgmt_methylation": true,
+  "idh_mutation": false,
+  "egfr_amplification": true,
+  "tert_mutation": true,
+  "atrx_mutation": false,
+  "edema_volume": 6.5,
+  "steroid_dose": 12.0,
+  "antiseizure_meds": true,
+  "neurological_symptoms": "headache, seizures",
+  "lateralization": "left",
+  "rano_response": "stable_disease",
+  "family_history": false,
+  "previous_radiation": false
+}

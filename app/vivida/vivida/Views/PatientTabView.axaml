@@ -1,0 +1,288 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:vivida.ViewModels"
+             xmlns:conv="using:vivida.Converters"
+             x:Class="vivida.Views.PatientTabView"
+             x:CompileBindings="True"
+             x:DataType="vm:PatientTabViewModel">
+
+    <UserControl.Resources>
+        <conv:BoolToYesNoConverter x:Key="BoolToYesNo"/>
+    </UserControl.Resources>
+
+    <ScrollViewer>
+        <StackPanel Margin="16,12" Spacing="4">
+
+            <!-- ══════════════════════════════════════════ -->
+            <!-- ══ Анализ плана лечения ══ -->
+            <!-- ══════════════════════════════════════════ -->
+            <TextBlock Text="Анализ плана лечения" FontWeight="SemiBold" FontSize="14" Foreground="#1a73e8"/>
+
+            <!-- Progress -->
+            <StackPanel IsVisible="{Binding IsAnalyzing}" Spacing="6" Margin="0,4,0,4">
+                <ProgressBar IsIndeterminate="True" Height="4"/>
+                <TextBlock Text="Выполняется анализ…" Foreground="#555" FontStyle="Italic"/>
+            </StackPanel>
+
+            <!-- Кнопка -->
+            <Button Content="{Binding AnalyzeButtonLabel}"
+                    Command="{Binding AnalyzeCommand}"
+                    IsEnabled="{Binding !IsAnalyzing}"
+                    Margin="0,4,0,8"/>
+
+            <!-- Results -->
+            <Border IsVisible="{Binding HasAnalysis}"
+                    Background="#F0F7FF" CornerRadius="6" Padding="12,10" Margin="0,0,0,8">
+                <StackPanel Spacing="10">
+
+                    <!-- Дата -->
+                    <TextBlock Text="{Binding AnalysisDateDisplay, StringFormat='Дата анализа: {0}'}"
+                               Foreground="#555" FontSize="11"/>
+
+                    <!-- Рекомендация -->
+                    <Border CornerRadius="4" Padding="8,6" Background="#1a73e8">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="Рекомендация:" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding RecommendationDisplay}"
+                                       Foreground="White" FontWeight="Bold" FontSize="13"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- План врача -->
+                    <TextBlock Text="План врача" FontWeight="SemiBold" FontSize="12"/>
+                    <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto">
+                        <Grid.Styles>
+                            <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
+                            <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,4"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                        </Grid.Styles>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Тип лечения:"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding DoctorTreatmentDisplay}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Предсказание выживаемости:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Classes="val"
+                                   Text="{Binding DoctorPredictionDisplay, StringFormat='{}{0} лет'}"/>
+                    </Grid>
+
+                    <Separator/>
+
+                    <!-- Глобальный оптимум -->
+                    <TextBlock Text="Глобальный оптимум" FontWeight="SemiBold" FontSize="12"/>
+                    <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                        <Grid.Styles>
+                            <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
+                            <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,4"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                        </Grid.Styles>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Тип лечения:"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding GlobalTreatmentDisplay}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Предсказание:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Classes="val"
+                                   Text="{Binding GlobalPredictionDisplay, StringFormat='{}{0} лет'}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Улучшение:"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
+                                   Text="{Binding GlobalImprovementDisplay, StringFormat='{}{0}%'}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Доза химио (мг/м²):"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding GlobalChemoDoseDisplay}"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Доза радио (Гр):"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Classes="val"
+                                   Text="{Binding GlobalRadioTotalDoseDisplay, StringFormat='{}{0}'}"/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Фракции:"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Classes="val"
+                                   Text="{Binding GlobalRadioFractionsDisplay, StringFormat='{}{0}'}"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Биологически эквивалентная доза (BED):"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Classes="val" Text="{Binding GlobalRadioBedDisplay}"/>
+                    </Grid>
+
+                    <Separator/>
+
+                    <!-- Локальный оптимум -->
+                    <TextBlock Text="Локальный оптимум" FontWeight="SemiBold" FontSize="12"/>
+                    <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto">
+                        <Grid.Styles>
+                            <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
+                            <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,4"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                        </Grid.Styles>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Тип лечения:"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding LocalTreatmentDisplay}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Предсказание:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Classes="val"
+                                   Text="{Binding LocalPredictionDisplay, StringFormat='{}{0} лет'}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Улучшение:"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
+                                   Text="{Binding LocalImprovementDisplay, StringFormat='{}{0}%'}"/>
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+            
+            <!-- ══ Основные данные ══ -->
+            <Separator Margin="0,8"/>
+            
+            <TextBlock Text="Основные данные" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl">
+                            <Setter Property="Foreground" Value="#555"/>
+                            <Setter Property="Margin" Value="0,0,8,6"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        <Style Selector="TextBlock.val">
+                            <Setter Property="Margin" Value="0,0,0,6"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="FontWeight" Value="Medium"/>
+                        </Style>
+                    </Grid.Styles>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Имя:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding Patient.Name}"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Идентификатор:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val" Text="{Binding Patient.PatientId}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Дата добавления:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val" Text="{Binding CreatedAtDisplay}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Возраст:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.Age, StringFormat='{}{0:F0} лет'}"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Размер опухоли до лечения:"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val" Text="{Binding Patient.TumorSizeBefore, StringFormat='{}{0:F2} см³'}"/>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Шкала Карновского:"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Classes="val" Text="{Binding Patient.Kps, StringFormat='{}{0:F0}'}"/>
+                </Grid>
+            </Border>
+
+            <!-- Тип лечения -->
+            <Border Background="#E8F0FE" CornerRadius="4" Padding="10,6" Margin="0,0,0,8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Тип лечения:" Foreground="#555" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding TreatmentDisplay}" FontWeight="SemiBold"
+                               Foreground="#1a73e8" FontSize="13" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- ══ Дозировки ══ -->
+            <TextBlock Text="Дозировки" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+                        <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,6"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                    </Grid.Styles>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Доза химио (мг/м²):"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.DoseMgPerM2, StringFormat='{}{0:F0}', FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Циклы:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.Cycles, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Доза радио (Гр):"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.TotalDoseGy, StringFormat='{}{0:F0}', FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Фракции:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.Fractions, FallbackValue='—', TargetNullValue='—'}"/>
+                </Grid>
+            </Border>
+
+            <!-- ══ Генетические маркеры ══ -->
+            <TextBlock Text="Генетические маркеры" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+                        <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,6"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                    </Grid.Styles>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Метилирование MGMT:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding Patient.MgmtMethylation, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Мутация IDH:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val" Text="{Binding Patient.IdhMutation, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Амплификация EGFR:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val" Text="{Binding Patient.EgfrAmplification, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Мутация TERT:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.TertMutation, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Мутация ATRX:"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val" Text="{Binding Patient.AtrxMutation, Converter={StaticResource BoolToYesNo}}"/>
+                </Grid>
+            </Border>
+
+            <!-- ══ Клинические признаки ══ -->
+            <TextBlock Text="Клинические признаки" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+                        <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,6"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                    </Grid.Styles>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Объём отёка (см³):"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.EdemaVolume, StringFormat='{}{0:F2}', FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Доза стероидов (мг):"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.SteroidDose, StringFormat='{}{0:F1}', FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Противосудорожные:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.AntiseizureMeds, Converter={StaticResource BoolToYesNo}}"/>
+                </Grid>
+            </Border>
+
+            <!-- ══ Неврологические симптомы ══ -->
+            <TextBlock Text="Неврологические симптомы" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+                        <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,6"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                    </Grid.Styles>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Головная боль:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding Patient.HasHeadache, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Судороги:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val" Text="{Binding Patient.HasSeizures, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Двигательный дефицит:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val" Text="{Binding Patient.HasMotorDeficit, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Сенсорный дефицит:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.HasSensoryDeficit, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Когнитивные нарушения:"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val" Text="{Binding Patient.HasCognitiveDecline, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Речевые нарушения:"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Classes="val" Text="{Binding Patient.HasSpeechDisturbance, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Зрительные нарушения:"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Classes="val" Text="{Binding Patient.HasVisualDisturbance, Converter={StaticResource BoolToYesNo}}"/>
+                </Grid>
+            </Border>
+
+            <!-- ══ Прочее ══ -->
+            <TextBlock Text="Прочее" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
+            <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
+                <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+                        <Style Selector="TextBlock.val"><Setter Property="Margin" Value="0,0,0,6"/><Setter Property="FontWeight" Value="Medium"/></Style>
+                    </Grid.Styles>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="lbl" Text="Пол:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="val" Text="{Binding GenderDisplay}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Степень резекции:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="val" Text="{Binding ResectionDisplay}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Локализация опухоли:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.TumorLocation, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Контрастное усиление:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.ContrastEnhancement, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Стадия:"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.Stage, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Латерализация:"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Classes="val" Text="{Binding LateralizationDisplay}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Ответ по RANO:"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Classes="val"
+                               Text="{Binding Patient.RanoResponse, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Classes="lbl" Text="Семейный анамнез:"/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Classes="val" Text="{Binding Patient.FamilyHistory, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Classes="lbl" Text="Предшествующее облучение:"/>
+                    <TextBlock Grid.Row="8" Grid.Column="1" Classes="val" Text="{Binding Patient.PreviousRadiation, Converter={StaticResource BoolToYesNo}}"/>
+                </Grid>
+            </Border>
+
+            <Border Height="16"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
