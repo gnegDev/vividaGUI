@@ -1,0 +1,40 @@
+# Build output
+bin/
+obj/
+
+# Runtime data
+vivida/vivida.db
+vivida/vivida.db-shm
+vivida/vivida.db-wal
+
+# IDE
+.idea/
+.vs/
+*.user
+*.suo
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+.vscode/
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+API_README.md
+example_patient.json
