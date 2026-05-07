@@ -97,7 +97,7 @@ public partial class PatientTabViewModel : ViewModelBase
     [RelayCommand]
     private void Close() => CloseRequested?.Invoke(this);
 
-    // --- Display properties for patient fields ---
+    // Отображения полей пациента
 
     public string TreatmentDisplay => TranslateTreatment(Patient.Treatment);
     public string GenderDisplay => Patient.Gender switch { "male" => "Мужской", "female" => "Женский", _ => "—" };
@@ -105,7 +105,7 @@ public partial class PatientTabViewModel : ViewModelBase
     public string LateralizationDisplay => Patient.Lateralization switch { "left" => "Левая", "right" => "Правая", _ => "—" };
     public string CreatedAtDisplay => Patient.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm");
 
-    // --- Display properties for analysis ---
+    // Отображения результатов анализа
 
     public string DoctorTreatmentDisplay => TranslateTreatment(AnalysisResult?.DoctorPlan?.TreatmentType);
     public string DoctorPredictionDisplay => AnalysisResult?.DoctorPlan?.Prediction.ToString("F2") ?? "—";

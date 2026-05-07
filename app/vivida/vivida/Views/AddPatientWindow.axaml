@@ -14,9 +14,8 @@
         <Border DockPanel.Dock="Bottom" Padding="12,8" BorderThickness="0,1,0,0" BorderBrush="#E0E0E0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
                 <Button Content="Сохранить" Command="{Binding SaveCommand}"
-                        Classes="accent" MinWidth="100"/>
-                <Button Content="Отмена" Command="{Binding CancelCommand}"
-                        MinWidth="100"/>
+                        Classes="accent"/>
+                <Button Content="Отмена" Command="{Binding CancelCommand}"/>
             </StackPanel>
         </Border>
 
@@ -24,7 +23,7 @@
         <ScrollViewer Padding="4,0">
             <StackPanel Margin="12,8,12,8" Spacing="4">
 
-                <!-- ══ Обязательные поля ══ -->
+                <!-- Обязательные поля -->
                 <TextBlock Text="Обязательные поля" FontWeight="SemiBold" FontSize="13"
                            Margin="0,4,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">
@@ -75,7 +74,7 @@
                     </Grid>
                 </Border>
 
-                <!-- ══ Дозировки ══ -->
+                <!-- Дозировки -->
                 <TextBlock Text="Дозировки (опционально)" FontWeight="SemiBold" FontSize="13"
                            Margin="0,8,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">
@@ -116,7 +115,7 @@
                     </Grid>
                 </Border>
 
-                <!-- ══ Генетические маркеры ══ -->
+                <!-- Генетические маркеры -->
                 <TextBlock Text="Генетические маркеры (опционально)" FontWeight="SemiBold" FontSize="13"
                            Margin="0,8,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">
@@ -129,7 +128,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- ══ Клинические признаки ══ -->
+                <!-- Клинические признаки -->
                 <TextBlock Text="Клинические признаки (опционально)" FontWeight="SemiBold" FontSize="13"
                            Margin="0,8,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">
@@ -162,7 +161,7 @@
                     </Grid>
                 </Border>
 
-                <!-- ══ Неврологические симптомы ══ -->
+                <!-- Неврологические симптомы -->
                 <TextBlock Text="Неврологические симптомы (опционально)" FontWeight="SemiBold" FontSize="13"
                            Margin="0,8,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">
@@ -177,7 +176,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- ══ Прочее ══ -->
+                <!-- Прочее -->
                 <TextBlock Text="Прочее (опционально)" FontWeight="SemiBold" FontSize="13"
                            Margin="0,8,0,4" Foreground="#1a73e8"/>
                 <Border Background="#F5F5F5" CornerRadius="4" Padding="10,8">

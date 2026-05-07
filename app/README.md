@@ -1,6 +1,6 @@
 # Вивида (приложение)
 
-Десктопное приложение, позволяющее загружать данные пациента с глиобластомой, отправлять их в локальный ML-сервис и получать рекомендации по оптимизации протокола лечения.
+Клиентское приложение, позволяющее загружать данные пациента с глиобластомой, отправлять их в локальный ML-сервис и получать рекомендации по оптимизации протокола лечения.
 
 ---
 
@@ -14,13 +14,13 @@
 
 ## Стек приложения
 
-| Слой | Технология |
-|---|---|
-| Платформа | .NET 10, C# |
-| UI | Avalonia UI 11.3.12 |
-| Архитектура | MVVM — CommunityToolkit.Mvvm 8.2.1 |
-| База данных | SQLite через EF Core 9 |
-| HTTP-клиент | System.Net.Http.HttpClient |
+| Слой        | Технология                  |
+|-------------|-----------------------------|
+| Платформа   | .NET 10, C#                 |
+| UI          | Avalonia UI 11              |
+| Архитектура | MVVM, CommunityToolkit.Mvvm |
+| База данных | SQLite, EF Core 9           |
+| HTTP-клиент | System.Net.Http.HttpClient  |
 
 ---
 
@@ -42,7 +42,7 @@ dotnet run
 ### Требования
 
 - .NET 10 SDK
-- Linux / Windows / macOS (любая платформа, поддерживаемая Avalonia)
+- Linux / Windows / macOS (любая платформа, поддерживаемая Avalonia UI)
 
 ---
 
@@ -50,47 +50,47 @@ dotnet run
 
 ### `Patient` — карточка пациента
 
-| Поле | Тип | Описание |
-|---|---|---|
-| `Id` | int | Первичный ключ (авто) |
-| `PatientId` | string | Уникальный код вида `PAT-XXXXXXXX` (авто) |
-| `Name` | string | ФИО |
-| `CreatedAt` | DateTime | Дата добавления (UTC) |
-| `Age` | double | Возраст, лет |
-| `TumorSizeBefore` | double | Размер опухоли до лечения, см³ |
-| `Kps` | double | Шкала Карновского (0–100) |
-| `Treatment` | string | Тип лечения: `chemoradiotherapy` / `chemotherapy` / `radiation` |
-| `DoseMgPerM2` | double? | Доза химиопрепарата, мг/м² |
-| `Cycles` | int? | Количество циклов химиотерапии |
-| `TotalDoseGy` | double? | Суммарная доза облучения, Гр |
-| `Fractions` | int? | Количество фракций |
-| `MgmtMethylation` | bool | Метилирование промотора MGMT |
-| `IdhMutation` | bool | Мутация IDH |
-| `EgfrAmplification` | bool | Амплификация EGFR |
-| `TertMutation` | bool | Мутация TERT |
-| `AtrxMutation` | bool | Мутация ATRX |
-| `EdemaVolume` | double? | Объём перитуморального отёка, см³ |
-| `SteroidDose` | double? | Суточная доза стероидов, мг |
-| `AntiseizureMeds` | bool | Противосудорожная терапия |
-| `HasHeadache` … `HasVisualDisturbance` | bool | Неврологические симптомы |
-| `Gender` | string? | `male` / `female` |
-| `ResectionExtent` | string? | `total` / `subtotal` / `biopsy` |
-| `TumorLocation` | string? | Локализация опухоли |
-| `ContrastEnhancement` | bool | Контрастное усиление |
-| `Stage` | string? | Стадия |
-| `Lateralization` | string? | `left` / `right` |
-| `RanoResponse` | string? | Ответ по критериям RANO |
-| `FamilyHistory` | bool | Семейный онкоанамнез |
-| `PreviousRadiation` | bool | Предшествующее облучение |
+| Поле                                   | Тип      | Описание                                                        |
+|----------------------------------------|----------|-----------------------------------------------------------------|
+| `Id`                                   | int      | Первичный ключ (авто)                                           |
+| `PatientId`                            | string   | Уникальный код вида `PAT-XXXXXXXX` (авто)                       |
+| `Name`                                 | string   | ФИО                                                             |
+| `CreatedAt`                            | DateTime | Дата добавления (UTC)                                           |
+| `Age`                                  | double   | Возраст, лет                                                    |
+| `TumorSizeBefore`                      | double   | Размер опухоли до лечения, см³                                  |
+| `Kps`                                  | double   | Шкала Карновского (0–100)                                       |
+| `Treatment`                            | string   | Тип лечения: `chemoradiotherapy` / `chemotherapy` / `radiation` |
+| `DoseMgPerM2`                          | double?  | Доза химиопрепарата, мг/м²                                      |
+| `Cycles`                               | int?     | Количество циклов химиотерапии                                  |
+| `TotalDoseGy`                          | double?  | Суммарная доза облучения, Гр                                    |
+| `Fractions`                            | int?     | Количество фракций                                              |
+| `MgmtMethylation`                      | bool     | Метилирование промотора MGMT                                    |
+| `IdhMutation`                          | bool     | Мутация IDH                                                     |
+| `EgfrAmplification`                    | bool     | Амплификация EGFR                                               |
+| `TertMutation`                         | bool     | Мутация TERT                                                    |
+| `AtrxMutation`                         | bool     | Мутация ATRX                                                    |
+| `EdemaVolume`                          | double?  | Объём перитуморального отёка, см³                               |
+| `SteroidDose`                          | double?  | Суточная доза стероидов, мг                                     |
+| `AntiseizureMeds`                      | bool     | Противосудорожная терапия                                       |
+| `HasHeadache` … `HasVisualDisturbance` | bool     | Неврологические симптомы                                        |
+| `Gender`                               | string?  | `male` / `female`                                               |
+| `ResectionExtent`                      | string?  | `total` / `subtotal` / `biopsy`                                 |
+| `TumorLocation`                        | string?  | Локализация опухоли                                             |
+| `ContrastEnhancement`                  | bool     | Контрастное усиление                                            |
+| `Stage`                                | string?  | Стадия                                                          |
+| `Lateralization`                       | string?  | `left` / `right`                                                |
+| `RanoResponse`                         | string?  | Ответ по критериям RANO                                         |
+| `FamilyHistory`                        | bool     | Семейный онкоанамнез                                            |
+| `PreviousRadiation`                    | bool     | Предшествующее облучение                                        |
 
 ### `AnalysisResult` — результат анализа
 
-| Поле | Тип | Описание |
-|---|---|---|
-| `Id` | int | Первичный ключ |
-| `PatientDbId` | int | FK → `Patient.Id` |
-| `CreatedAt` | DateTime | Время анализа (UTC) |
-| `ResultJson` | string | Полный JSON-ответ от API |
+| Поле          | Тип      | Описание                 |
+|---------------|----------|--------------------------|
+| `Id`          | int      | Первичный ключ           |
+| `PatientDbId` | int      | FK → `Patient.Id`        |
+| `CreatedAt`   | DateTime | Время анализа (UTC)      |
+| `ResultJson`  | string   | Полный JSON-ответ от API |
 
 ---
 

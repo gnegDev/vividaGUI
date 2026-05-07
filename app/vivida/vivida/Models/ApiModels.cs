@@ -149,7 +149,7 @@ public class OptimizeSummaryRequest
     public bool PreviousRadiation { get; set; }
 }
 
-// --- Response models ---
+// Модели ответа
 
 public class DoctorPlan
 {

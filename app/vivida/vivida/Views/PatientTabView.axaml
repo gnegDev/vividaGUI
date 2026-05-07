@@ -13,24 +13,22 @@
     <ScrollViewer>
         <StackPanel Margin="16,12" Spacing="4">
 
-            <!-- ══════════════════════════════════════════ -->
-            <!-- ══ Анализ плана лечения ══ -->
-            <!-- ══════════════════════════════════════════ -->
+            <!-- Анализ плана лечения -->
             <TextBlock Text="Анализ плана лечения" FontWeight="SemiBold" FontSize="14" Foreground="#1a73e8"/>
 
-            <!-- Progress -->
+            <!-- Полоса проресса -->
             <StackPanel IsVisible="{Binding IsAnalyzing}" Spacing="6" Margin="0,4,0,4">
                 <ProgressBar IsIndeterminate="True" Height="4"/>
                 <TextBlock Text="Выполняется анализ…" Foreground="#555" FontStyle="Italic"/>
             </StackPanel>
 
-            <!-- Кнопка -->
+            <!-- Кнопка анализа -->
             <Button Content="{Binding AnalyzeButtonLabel}"
                     Command="{Binding AnalyzeCommand}"
                     IsEnabled="{Binding !IsAnalyzing}"
                     Margin="0,4,0,8"/>
 
-            <!-- Results -->
+            <!-- Результаты анализа -->
             <Border IsVisible="{Binding HasAnalysis}"
                     Background="#F0F7FF" CornerRadius="6" Padding="12,10" Margin="0,0,0,8">
                 <StackPanel Spacing="10">
@@ -65,7 +63,7 @@
                     <Separator/>
 
                     <!-- Глобальный оптимум -->
-                    <TextBlock Text="Глобальный оптимум" FontWeight="SemiBold" FontSize="12"/>
+                    <TextBlock Text="Глобальный оптимум (общая рекомендация)" FontWeight="SemiBold" FontSize="12"/>
                     <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                         <Grid.Styles>
                             <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
@@ -94,7 +92,7 @@
                     <Separator/>
 
                     <!-- Локальный оптимум -->
-                    <TextBlock Text="Локальный оптимум" FontWeight="SemiBold" FontSize="12"/>
+                    <TextBlock Text="Локальный оптимум (оптимизация предложенного плана)" FontWeight="SemiBold" FontSize="12"/>
                     <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto">
                         <Grid.Styles>
                             <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
@@ -113,7 +111,7 @@
                 </StackPanel>
             </Border>
             
-            <!-- ══ Основные данные ══ -->
+            <!-- Основные данные -->
             <Separator Margin="0,8"/>
             
             <TextBlock Text="Основные данные" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
@@ -161,7 +159,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- ══ Дозировки ══ -->
+            <!-- Дозировки -->
             <TextBlock Text="Дозировки" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
             <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
                 <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto">
@@ -184,7 +182,7 @@
                 </Grid>
             </Border>
 
-            <!-- ══ Генетические маркеры ══ -->
+            <!-- Генетические маркеры -->
             <TextBlock Text="Генетические маркеры" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
             <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
                 <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
@@ -205,7 +203,7 @@
                 </Grid>
             </Border>
 
-            <!-- ══ Клинические признаки ══ -->
+            <!-- Клинические признаки -->
             <TextBlock Text="Клинические признаки" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
             <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
                 <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto">
@@ -225,7 +223,7 @@
                 </Grid>
             </Border>
 
-            <!-- ══ Неврологические симптомы ══ -->
+            <!-- Неврологические симптомы -->
             <TextBlock Text="Неврологические симптомы" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
             <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
                 <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
@@ -250,7 +248,7 @@
                 </Grid>
             </Border>
 
-            <!-- ══ Прочее ══ -->
+            <!-- Прочее -->
             <TextBlock Text="Прочее" FontWeight="SemiBold" FontSize="13" Foreground="#1a73e8"/>
             <Border Background="#F8F8F8" CornerRadius="4" Padding="10,8" Margin="0,2,0,8">
                 <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">

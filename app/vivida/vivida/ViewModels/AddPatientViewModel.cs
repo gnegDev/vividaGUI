@@ -9,7 +9,7 @@ namespace vivida.ViewModels;
 
 public partial class AddPatientViewModel : ObservableValidator
 {
-    // --- Required ---
+    // Обязательные поля
 
     [ObservableProperty]
     [NotifyDataErrorInfo]
@@ -35,25 +35,25 @@ public partial class AddPatientViewModel : ObservableValidator
     [ObservableProperty]
     private int _treatmentIndex;
 
-    // --- Dosage ---
+    // Дозировки
     [ObservableProperty] private decimal? _doseMgPerM2;
     [ObservableProperty] private decimal? _cycles;
     [ObservableProperty] private decimal? _totalDoseGy;
     [ObservableProperty] private decimal? _fractions;
 
-    // --- Genetic markers ---
+    // Генетические маркеры
     [ObservableProperty] private bool _mgmtMethylation;
     [ObservableProperty] private bool _idhMutation;
     [ObservableProperty] private bool _egfrAmplification;
     [ObservableProperty] private bool _tertMutation;
     [ObservableProperty] private bool _atrxMutation;
 
-    // --- Clinical ---
+    // Клинические признаки
     [ObservableProperty] private decimal? _edemaVolume;
     [ObservableProperty] private decimal? _steroidDose;
     [ObservableProperty] private bool _antiseizureMeds;
 
-    // --- Neurological ---
+    // Неврологические симптомы
     [ObservableProperty] private bool _hasHeadache;
     [ObservableProperty] private bool _hasSeizures;
     [ObservableProperty] private bool _hasMotorDeficit;
@@ -62,7 +62,7 @@ public partial class AddPatientViewModel : ObservableValidator
     [ObservableProperty] private bool _hasSpeechDisturbance;
     [ObservableProperty] private bool _hasVisualDisturbance;
 
-    // --- Other ---
+    // Прочее
     [ObservableProperty] private int _genderIndex;
     [ObservableProperty] private int _resectionIndex;
     [ObservableProperty] private string _tumorLocation = "";
@@ -76,7 +76,7 @@ public partial class AddPatientViewModel : ObservableValidator
     public IEnumerable<string> TreatmentOptions { get; } = ["Химиолучевая терапия", "Химиотерапия", "Лучевая терапия"];
     public IEnumerable<string> GenderOptions { get; } = ["Не указан", "Мужской", "Женский"];
     public IEnumerable<string> ResectionOptions { get; } = ["Не указана", "Тотальная", "Субтотальная", "Биопсия"];
-    public IEnumerable<string> LateralizationOptions { get; } = ["Не указана", "Левая", "Правая"];
+    public IEnumerable<string> LateralizationOptions { get; } = ["Не указана", "Левая", "Правая", "Билатеральная"];
 
     public bool Saved { get; private set; }
     public Patient? Result { get; private set; }
@@ -90,9 +90,9 @@ public partial class AddPatientViewModel : ObservableValidator
         if (HasErrors) return;
 
         string[] treatments = ["chemoradiotherapy", "chemotherapy", "radiation"];
-        string?[] genders = [null, "male", "female"];
+        string?[] genders = [null, "M", "F"];
         string?[] resections = [null, "total", "subtotal", "biopsy"];
-        string?[] lateralizations = [null, "left", "right"];
+        string?[] lateralizations = [null, "left", "right", "biliteral"];
 
         Result = new Patient
         {
@@ -139,7 +139,7 @@ public partial class AddPatientViewModel : ObservableValidator
     [RelayCommand]
     private void Cancel() => RequestClose?.Invoke();
 
-    // --- Validators ---
+    // Валидаторы
 
     public static ValidationResult? ValidateAge(decimal? value, ValidationContext ctx)
     {

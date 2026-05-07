@@ -12,8 +12,7 @@
         Icon="/Assets/avalonia-logo.ico">
 
     <DockPanel>
-
-        <!-- ══ Меню ══ -->
+        <!-- Меню -->
         <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#D0D0D0">
             <Menu>
                 <MenuItem Header="Сервис">
@@ -26,10 +25,10 @@
             </Menu>
         </Border>
 
-        <!-- ══ Основная область ══ -->
+        <!-- Основная область -->
         <Grid ColumnDefinitions="280,4,*">
 
-            <!-- ══ Левая панель пациентов ══ -->
+            <!-- Левая панель пациентов -->
             <Border Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="#D0D0D0">
                 <Grid RowDefinitions="Auto,Auto,*">
                     <Button Grid.Row="0"
@@ -47,7 +46,7 @@
                     <ListBox Grid.Row="2"
                              x:Name="PatientListBox"
                              ItemsSource="{Binding FilteredPatients}"
-                             Margin="8,0,8,4"
+                             Margin="8,0,8,8"
                              CornerRadius="4">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:CompileBindings="False">
@@ -74,10 +73,10 @@
                 </Grid>
             </Border>
 
-            <!-- ══ Разделитель ══ -->
+            <!-- Разделитель -->
             <GridSplitter Grid.Column="1" Background="#D0D0D0" VerticalAlignment="Stretch"/>
 
-            <!-- ══ Вкладки ══ -->
+            <!-- Вкладки -->
             <TabControl Grid.Column="2"
                         ItemsSource="{Binding Tabs}"
                         SelectedItem="{Binding SelectedTab}">
