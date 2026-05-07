@@ -100,9 +100,12 @@ public partial class PatientTabViewModel : ViewModelBase
     // Отображения полей пациента
 
     public string TreatmentDisplay => TranslateTreatment(Patient.Treatment);
-    public string GenderDisplay => Patient.Gender switch { "male" => "Мужской", "female" => "Женский", _ => "—" };
+    public string GenderDisplay => Patient.Gender switch { "M" => "Мужской", "F" => "Женский", _ => "—" };
     public string ResectionDisplay => Patient.ResectionExtent switch { "total" => "Тотальная", "subtotal" => "Субтотальная", "biopsy" => "Биопсия", _ => "—" };
+    public string TumorLocationDisplay => Patient.TumorLocation switch { "frontal_lobe" => "Лобная доля", "parietal_lobe" => "Теменная доля", "temporal_lobe" => "Височная доля" , "occipital_lobe" => "Затылочная доля", "multifocal" => "Мультифокальная", _ => "—"};
+    public string StageDisplay => Patient.Stage switch { "Stage 1" => "1", "Stage 2" => "2", "Stage 3" => "3", "Stage 4" => "4", _ => "—" };
     public string LateralizationDisplay => Patient.Lateralization switch { "left" => "Левая", "right" => "Правая", "biliteral" => "Билатеральная", _ => "—" };
+    public string RanoResponseDisplay => Patient.RanoResponse switch { "stable_disease" => "Стабильное заболевание", "progressive_disease" => "Прогрессирующее заболевание", "partial_response" => "Неполный ответ", _ => "—" };
     public string CreatedAtDisplay => Patient.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm");
 
     // Отображения результатов анализа

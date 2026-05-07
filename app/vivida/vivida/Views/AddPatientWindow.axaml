@@ -190,6 +190,9 @@
                             <Style Selector="TextBox">
                                 <Setter Property="Margin" Value="0,0,0,8"/>
                             </Style>
+                            <Style Selector="NumericUpDown">
+                                <Setter Property="Margin" Value="0,0,0,8"/>
+                            </Style>
                             <Style Selector="ComboBox">
                                 <Setter Property="Margin" Value="0,0,0,8"/>
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -207,10 +210,15 @@
                                    SelectedIndex="{Binding ResectionIndex}"/>
 
                         <TextBlock Grid.Row="2" Grid.Column="0" Classes="label" Text="Локализация опухоли:"/>
-                        <TextBox   Grid.Row="2" Grid.Column="1" Text="{Binding TumorLocation}"/>
+                        <ComboBox  Grid.Row="2" Grid.Column="1"
+                                   ItemsSource="{Binding TumorLocationOptions}"
+                                   SelectedIndex="{Binding TumorLocationIndex}"/>
 
                         <TextBlock Grid.Row="3" Grid.Column="0" Classes="label" Text="Стадия:"/>
-                        <TextBox   Grid.Row="3" Grid.Column="1" Text="{Binding Stage}"/>
+                        <NumericUpDown Grid.Row="3" Grid.Column="1"
+                                       Value="{Binding Stage}"
+                                       Minimum="1" Maximum="4"
+                                       Increment="1" FormatString="0.#"/>
 
                         <TextBlock Grid.Row="4" Grid.Column="0" Classes="label" Text="Латерализация:"/>
                         <ComboBox  Grid.Row="4" Grid.Column="1"
@@ -218,7 +226,9 @@
                                    SelectedIndex="{Binding LateralizationIndex}"/>
 
                         <TextBlock Grid.Row="5" Grid.Column="0" Classes="label" Text="Ответ по RANO:"/>
-                        <TextBox   Grid.Row="5" Grid.Column="1" Text="{Binding RanoResponse}"/>
+                        <ComboBox  Grid.Row="5" Grid.Column="1"
+                                   ItemsSource="{Binding RanoResponseOptions}"
+                                   SelectedIndex="{Binding RanoResponseIndex}"/>
 
                         <CheckBox  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
                                    Content="Контрастное усиление"

@@ -261,18 +261,15 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Classes="lbl" Text="Степень резекции:"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Classes="val" Text="{Binding ResectionDisplay}"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Локализация опухоли:"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val"
-                               Text="{Binding Patient.TumorLocation, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="val" Text="{Binding TumorLocationDisplay}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Контрастное усиление:"/>
                     <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.ContrastEnhancement, Converter={StaticResource BoolToYesNo}}"/>
                     <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Стадия:"/>
-                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val"
-                               Text="{Binding Patient.Stage, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Classes="val" Text="{Binding StageDisplay}"/>
                     <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Латерализация:"/>
                     <TextBlock Grid.Row="5" Grid.Column="1" Classes="val" Text="{Binding LateralizationDisplay}"/>
                     <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Ответ по RANO:"/>
-                    <TextBlock Grid.Row="6" Grid.Column="1" Classes="val"
-                               Text="{Binding Patient.RanoResponse, FallbackValue='—', TargetNullValue='—'}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Classes="val" Text="{Binding RanoResponseDisplay}"/>
                     <TextBlock Grid.Row="7" Grid.Column="0" Classes="lbl" Text="Семейный анамнез:"/>
                     <TextBlock Grid.Row="7" Grid.Column="1" Classes="val" Text="{Binding Patient.FamilyHistory, Converter={StaticResource BoolToYesNo}}"/>
                     <TextBlock Grid.Row="8" Grid.Column="0" Classes="lbl" Text="Предшествующее облучение:"/>
