@@ -41,7 +41,9 @@
                     <TextBox Grid.Row="1"
                              Text="{Binding SearchText}"
                              Watermark="Поиск по имени..."
-                             Margin="8,0,8,4"/>
+                             Margin="8,0,8,4"
+                             Width="NaN"
+                             MinWidth="0"/>
 
                     <ListBox Grid.Row="2"
                              x:Name="PatientListBox"
@@ -56,7 +58,7 @@
                                                    FontWeight="SemiBold"
                                                    TextTrimming="CharacterEllipsis"/>
                                         <TextBlock Text="{Binding CreatedAt, StringFormat='{}{0:dd.MM.yyyy}'}"
-                                                   FontSize="11" Foreground="#888"/>
+                                                   FontSize="11"/>
                                     </StackPanel>
                                     <Button Grid.Column="1"
                                             Content="×"
@@ -87,7 +89,8 @@
                             <TextBlock Text="{Binding Header}"
                                        VerticalAlignment="Center"
                                        MaxWidth="160"
-                                       TextTrimming="CharacterEllipsis"/>
+                                       TextTrimming="CharacterEllipsis"
+                                       ToolTip.Tip="{Binding Header}"/>
                             <Button Content="×"
                                     Command="{Binding CloseCommand}"
                                     Padding="4,0" MinWidth="0" MinHeight="0"

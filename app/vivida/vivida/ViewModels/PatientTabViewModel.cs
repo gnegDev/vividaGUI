@@ -102,7 +102,7 @@ public partial class PatientTabViewModel : ViewModelBase
     public string TreatmentDisplay => TranslateTreatment(Patient.Treatment);
     public string GenderDisplay => Patient.Gender switch { "male" => "Мужской", "female" => "Женский", _ => "—" };
     public string ResectionDisplay => Patient.ResectionExtent switch { "total" => "Тотальная", "subtotal" => "Субтотальная", "biopsy" => "Биопсия", _ => "—" };
-    public string LateralizationDisplay => Patient.Lateralization switch { "left" => "Левая", "right" => "Правая", _ => "—" };
+    public string LateralizationDisplay => Patient.Lateralization switch { "left" => "Левая", "right" => "Правая", "biliteral" => "Билатеральная", _ => "—" };
     public string CreatedAtDisplay => Patient.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm");
 
     // Отображения результатов анализа
