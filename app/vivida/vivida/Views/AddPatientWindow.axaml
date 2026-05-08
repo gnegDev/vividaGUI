@@ -58,8 +58,8 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Classes="label" Text="Размер опухоли, см³:"/>
                         <NumericUpDown Grid.Row="2" Grid.Column="1"
                                        Value="{Binding TumorSize}"
-                                       Minimum="0" Increment="0.1"
-                                       FormatString="0.##"/>
+                                       Minimum="0" Maximum="100"
+                                       Increment="0.1" FormatString="0.##"/>
 
                         <TextBlock Grid.Row="3" Grid.Column="0" Classes="label" Text="Шкала Карновского (0–100):"/>
                         <NumericUpDown Grid.Row="3" Grid.Column="1"
@@ -92,8 +92,8 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Classes="label" Text="Доза химио, мг/м²:"/>
                         <NumericUpDown Grid.Row="0" Grid.Column="1"
                                        Value="{Binding DoseMgPerM2}"
-                                       Minimum="0" Increment="10"
-                                       FormatString="0.#"/>
+                                       Minimum="0" Maximum="1000"
+                                       Increment="10" FormatString="0.#"/>
 
                         <TextBlock Grid.Row="1" Grid.Column="0" Classes="label" Text="Циклы химиотерапии:"/>
                         <NumericUpDown Grid.Row="1" Grid.Column="1"
@@ -104,8 +104,8 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Classes="label" Text="Доза облучения, Гр:"/>
                         <NumericUpDown Grid.Row="2" Grid.Column="1"
                                        Value="{Binding TotalDoseGy}"
-                                       Minimum="0" Increment="0.5"
-                                       FormatString="0.#"/>
+                                       Minimum="0" Maximum="1000"
+                                       Increment="0.5" FormatString="0.#"/>
 
                         <TextBlock Grid.Row="3" Grid.Column="0" Classes="label" Text="Количество фракций:"/>
                         <NumericUpDown Grid.Row="3" Grid.Column="1"
@@ -146,14 +146,14 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Classes="label" Text="Объём отёка, см³:"/>
                         <NumericUpDown Grid.Row="0" Grid.Column="1"
                                        Value="{Binding EdemaVolume}"
-                                       Minimum="0" Increment="0.1"
-                                       FormatString="0.##"/>
+                                       Minimum="0" Maximum="100"
+                                       Increment="0.1" FormatString="0.##"/>
 
                         <TextBlock Grid.Row="1" Grid.Column="0" Classes="label" Text="Доза стероидов, мг:"/>
                         <NumericUpDown Grid.Row="1" Grid.Column="1"
                                        Value="{Binding SteroidDose}"
-                                       Minimum="0" Increment="0.5"
-                                       FormatString="0.#"/>
+                                       Minimum="0" Maximum="1000"
+                                       Increment="0.5" FormatString="0.#"/>
 
                         <CheckBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                    Content="Противосудорожные препараты"

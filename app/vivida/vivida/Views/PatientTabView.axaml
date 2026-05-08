@@ -63,7 +63,7 @@
                     <Separator/>
 
                     <!-- Глобальный оптимум -->
-                    <TextBlock Text="Глобальный оптимум (общая рекомендация)" FontWeight="SemiBold" FontSize="12"/>
+                    <TextBlock Text="Глобальный оптимум (итоговая рекомендация)" FontWeight="SemiBold" FontSize="12"/>
                     <Grid ColumnDefinitions="300,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                         <Grid.Styles>
                             <Style Selector="TextBlock.lbl"><Setter Property="Foreground" Value="#555"/><Setter Property="Margin" Value="0,0,8,4"/></Style>
