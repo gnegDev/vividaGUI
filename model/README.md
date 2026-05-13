@@ -155,12 +155,12 @@ dV/dt = r·V·ln(K/V) − α·(chemo)·V − β·(radio)·V
 
 ```
 vivida/
-├── main.py                                       # FastAPI приложение
-├── optimizer.py                                  # ML логика и симуляция
+├── main.py                                        # FastAPI приложение
+├── optimizer.py                                   # ML логика и симуляция
 ├── requirements.txt
 ├── Dockerfile
 ├── example_patient.json
-└── gbm_models_output_all90_dosage_full_features/ # Обученные модели
+└── gbm_models_output_all90_dosage_full_features/  # Обученные модели
     ├── stacked_models.joblib
     ├── onehot_encoder.joblib
     ├── scaler.joblib

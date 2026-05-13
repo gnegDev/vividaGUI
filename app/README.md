@@ -101,21 +101,21 @@ vivida/
 ├── vivida.sln
 └── vivida/
     ├── Models/
-    │   ├── Patient.cs          # EF Core-сущность пациента
-    │   ├── AnalysisResult.cs   # EF Core-сущность результата
-    │   └── ApiModels.cs        # DTO для REST API (запрос / ответ)
+    │   ├── Patient.cs                   # EF Core-сущность пациента
+    │   ├── AnalysisResult.cs            # EF Core-сущность результата
+    │   └── ApiModels.cs                 # DTO для REST API (запрос / ответ)
     ├── Data/
-    │   └── AppDbContext.cs     # DbContext, настройка FK
+    │   └── AppDbContext.cs              # DbContext, настройка FK
     ├── Services/
-    │   ├── DatabaseService.cs  # CRUD: пациенты и результаты
-    │   ├── ApiService.cs       # HTTP-клиент: /health, /optimize/summary
-    │   └── PatientService.cs   # Сборка OptimizeSummaryRequest из Patient
+    │   ├── DatabaseService.cs           # CRUD: пациенты и результаты
+    │   ├── ApiService.cs                # HTTP-клиент: /health, /optimize/summary
+    │   └── PatientService.cs            # Сборка OptimizeSummaryRequest из Patient
     ├── Converters/
-    │   └── BoolToYesNoConverter.cs  # IValueConverter → «Да» / «Нет»
+    │   └── BoolToYesNoConverter.cs      # IValueConverter → «Да» / «Нет»
     ├── ViewModels/
-    │   ├── MainWindowViewModel.cs   # Список пациентов, вкладки, команды меню
-    │   ├── PatientTabViewModel.cs   # Карточка-вкладка: отображение, анализ
-    │   └── AddPatientViewModel.cs   # Форма ввода с валидацией
+    │   ├── MainWindowViewModel.cs       # Список пациентов, вкладки, команды меню
+    │   ├── PatientTabViewModel.cs       # Карточка-вкладка: отображение, анализ
+    │   └── AddPatientViewModel.cs       # Форма ввода с валидацией
     └── Views/
         ├── MainWindow.axaml(.cs)        # Главное окно: меню, список, вкладки
         ├── PatientTabView.axaml(.cs)    # UserControl: данные пациента + результат
