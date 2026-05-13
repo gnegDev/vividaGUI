@@ -66,7 +66,7 @@ public partial class AddPatientViewModel : ObservableValidator
     [ObservableProperty] private int _genderIndex;
     [ObservableProperty] private int _resectionIndex;
     [ObservableProperty] private int _tumorLocationIndex;
-    [ObservableProperty] private bool _contrastEnhancement;
+    [ObservableProperty] private int _contrastEnhancementIndex;
     [ObservableProperty] private decimal? _stage;
     [ObservableProperty] private int _lateralizationIndex;
     [ObservableProperty] private int _ranoResponseIndex;
@@ -77,6 +77,7 @@ public partial class AddPatientViewModel : ObservableValidator
     public IEnumerable<string> GenderOptions { get; } = ["Не указан", "Мужской", "Женский"];
     public IEnumerable<string> ResectionOptions { get; } = ["Не указана", "Тотальная", "Субтотальная", "Биопсия"];
     public IEnumerable<string> TumorLocationOptions { get; } = ["Не указана", "Лобная доля", "Теменная доля", "Височная доля", "Затылочная доля", "Мультифокальная"];
+    public IEnumerable<string> ContrastEnhancementOptions { get; } = ["Не указано", "Неравномерное", "Кольцевидное", "Сплошное"];
     public IEnumerable<string> LateralizationOptions { get; } = ["Не указана", "Левая", "Правая", "Билатеральная"];
     public IEnumerable<string> RanoResponseOptions { get; } = ["Не указан", "Стабильное заболевание", "Прогрессирующее заболевание", "Неполный ответ"];
 
@@ -93,8 +94,9 @@ public partial class AddPatientViewModel : ObservableValidator
 
         string[] treatments = ["chemoradiotherapy", "chemotherapy", "radiation"];
         string?[] genders = [null, "M", "F"];
-        string?[] resections = [null, "total", "subtotal", "biopsy"];
+        string?[] resections = [null, "gross_total", "subtotal", "biopsy_only"];
         string?[] tumorLocations = [null, "frontal_lobe", "parietal_lobe", "temporal_lobe", "occipital_lobe", "multifocal"];
+        string?[] contrastEnhancements = [null, "patchy", "ring", "solid"];
         string?[] lateralizations = [null, "left", "right", "biliteral"];
         string?[] ranoResponses = [null, "stable_disease", "progressive_disease", "partial_response"];
 
@@ -128,7 +130,7 @@ public partial class AddPatientViewModel : ObservableValidator
             Gender = genders[GenderIndex],
             ResectionExtent = resections[ResectionIndex],
             TumorLocation = tumorLocations[TumorLocationIndex],
-            ContrastEnhancement = ContrastEnhancement,
+            ContrastEnhancement = contrastEnhancements[ContrastEnhancementIndex],
             Stage = NullIfEmpty("Stage " + Stage),
             Lateralization = lateralizations[LateralizationIndex],
             RanoResponse = ranoResponses[RanoResponseIndex],

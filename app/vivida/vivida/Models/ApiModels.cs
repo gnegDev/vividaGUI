@@ -126,7 +126,7 @@ public class OptimizeSummaryRequest
 
     [JsonPropertyName("contrast_enhancement")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public bool ContrastEnhancement { get; set; }
+    public string? ContrastEnhancement { get; set; }
 
     [JsonPropertyName("stage")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

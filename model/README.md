@@ -12,6 +12,8 @@ REST API для оптимизации лечения глиобластомы.
 
 ### Локально
 
+Перед запуском скачать [архив](https://drive.google.com/file/d/1hvvvdLkFtKNuCw6LWm5ar7nnSlxJI8w7/view?usp=drive_link) и распаковать в `vivida/`.
+
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8080

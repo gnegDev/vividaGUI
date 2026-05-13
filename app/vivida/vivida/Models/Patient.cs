@@ -46,7 +46,7 @@ public class Patient
     public string? Gender { get; set; }
     public string? ResectionExtent { get; set; }
     public string? TumorLocation { get; set; }
-    public bool ContrastEnhancement { get; set; }
+    public string? ContrastEnhancement { get; set; }
     public string? Stage { get; set; }
     public string? Lateralization { get; set; }
     public string? RanoResponse { get; set; }

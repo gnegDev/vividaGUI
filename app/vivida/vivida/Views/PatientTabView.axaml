@@ -85,7 +85,7 @@
                         <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Фракции:"/>
                         <TextBlock Grid.Row="5" Grid.Column="1" Classes="val"
                                    Text="{Binding GlobalRadioFractionsDisplay, StringFormat='{}{0}'}"/>
-                        <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Биологически эквивалентная доза (BED):"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Classes="lbl" Text="Биологически эквивалентная доза:"/>
                         <TextBlock Grid.Row="6" Grid.Column="1" Classes="val" Text="{Binding GlobalRadioBedDisplay}"/>
                     </Grid>
 
@@ -263,7 +263,7 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Classes="lbl" Text="Локализация опухоли:"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Classes="val" Text="{Binding TumorLocationDisplay}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Classes="lbl" Text="Контрастное усиление:"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding Patient.ContrastEnhancement, Converter={StaticResource BoolToYesNo}}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Classes="val" Text="{Binding ContrastEnhancementDisplay}"/>
                     <TextBlock Grid.Row="4" Grid.Column="0" Classes="lbl" Text="Стадия:"/>
                     <TextBlock Grid.Row="4" Grid.Column="1" Classes="val" Text="{Binding StageDisplay}"/>
                     <TextBlock Grid.Row="5" Grid.Column="0" Classes="lbl" Text="Латерализация:"/>

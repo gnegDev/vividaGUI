@@ -60,6 +60,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         var saved = await _dbService.AddPatientAsync(patient);
         _allPatients.Insert(0, saved);
+        
         ApplyFilter();
     }
 
@@ -129,8 +130,7 @@ public partial class MainWindowViewModel : ViewModelBase
         if (ShowMessageDialog is null) return;
         await ShowMessageDialog("О приложении",
             "Вивида — система анализа планов лечения глиобластомы.\n" +
-            "Использует ML-модель для оптимизации лечения.\n" +
-            "Симуляция роста опухоли по модели Гомперца.\n\n" +
+            "Использует ML-модель для оптимизации лечения.\n\n" +
             "Вальтуилье И.А. 2026\n" +
             "Версия 1.0");
     }

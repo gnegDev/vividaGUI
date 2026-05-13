@@ -198,6 +198,8 @@
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
                             </Style>
                         </Grid.Styles>
+                        
+                        
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Classes="label" Text="Пол:"/>
                         <ComboBox  Grid.Row="0" Grid.Column="1"
@@ -230,9 +232,11 @@
                                    ItemsSource="{Binding RanoResponseOptions}"
                                    SelectedIndex="{Binding RanoResponseIndex}"/>
 
-                        <CheckBox  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
-                                   Content="Контрастное усиление"
-                                   IsChecked="{Binding ContrastEnhancement}" Margin="0,0,0,4"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Classes="label" Text="Контрастное усиление"/>
+                        <ComboBox  Grid.Row="6" Grid.Column="1"
+                                   ItemsSource="{Binding ContrastEnhancementOptions}"
+                                   SelectedIndex="{Binding ContrastEnhancementIndex}"/>
+                        
                         <CheckBox  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                                    Content="Семейный анамнез"
                                    IsChecked="{Binding FamilyHistory}" Margin="0,0,0,4"/>
